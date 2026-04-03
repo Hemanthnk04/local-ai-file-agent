@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────
+# File Agent Configuration
+# Edit this file to change model, paths, limits
+# ─────────────────────────────────────────────
+
+llm:
+  provider: ollama              # ollama | openai | anthropic
+  model: gpt-oss:120b-cloud             # model name ex: qwen2.5:3b
+  url: http://localhost:11434/api/generate
+  timeout_seconds: 120          # seconds before a request is abandoned
+  retry_attempts: 3             # number of retries on failure
+  retry_delay_seconds: 2        # wait between retries
+
+paths:
+  base_dir: ""                  # working directory — empty = folder where main.py lives
+  bin_dir: ".agent_bin"         # recycle bin folder name (relative to base_dir)
+  log_dir: ".agent_logs"        # log folder name (relative to base_dir)
+
+limits:
+  max_file_chars: 40000         # max characters sent to LLM in one call (~10k tokens)
+  max_chunk_overlap: 200        # overlap between chunks when file is split
+  bin_max_mb: 500               # max recycle bin size in MB before warning
+  bin_max_items: 1000           # max items in bin before warning
+
+agent:
+  interactive: true             # false = no input() prompts (for master agent use)
+  show_diff: true               # show diff before rewriting
+  auto_backup: true             # auto-backup before rewrite/delete

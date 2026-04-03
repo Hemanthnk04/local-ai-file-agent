@@ -1,0 +1,9 @@
+requests
+pandas
+openpyxl
+python-docx
+pypdf
+reportlab
+PyYAML
+tabulate
+lxml
